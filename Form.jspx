@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="US-ASCII" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsp/jstl/fmt" version="2.0">
+	<jsp:directive.page contentType="text/html; charset=US-ASCII"
+		pageEncoding="US-ASCII" session="false" />
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+	<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Student Information System</title>
+</head>
+<body>
+<form action="" method="POST" id="form" name="form">
+<FIELDSET>
+<LEGEND>Student Information System</LEGEND>
+
+<table>
+
+<tr>
+	<td><span class ="error"><font color = "red"> ${error}</font></span></td> 
+</tr>
+
+<tr>
+	<td>Name Prefix:</td>
+	<td><input name="name" id="name" type="text" value="${name}" size="50"/></td>
+</tr>
+
+<tr>
+	<td>Minimum Credit Taken: </td>
+	<td><input name="credit" id="credit" type="text" value="${credit}" size="50"/> </td>
+</tr>
+
+<tr>
+	<td><input name="report" id="report" value="report" type="submit"/></td>
+</tr>
+</table>
+</FIELDSET>
+
+<br/>
+		<c:if test="${not empty check}">
+			<table align="center" border="1">
+				<td>Id</td>
+				<td>Name</td>
+				<td> Credit Taken</td>
+				<td>Credits to graduate</td>
+				<td> Credits end of term</td>
+				
+				<tr> </tr>
+				<c:forEach var="item" items="${student.values()}">
+				<tr>
+					<td>${item.sid}</td>
+					<td> ${item.name}</td>
+					<td>${item.credit_taken}</td>
+					<td>${item.credit_graduate}</td>
+					<td>${item.credit_taken}</td>
+				</tr>
+				</c:forEach>		
+			</table>
+		</c:if>	
+</form>
+</body>
+</html>
+</jsp:root>
